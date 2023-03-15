@@ -1,8 +1,6 @@
 import { Component } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import Main from './pages/Main';
+import { Home, Main, NotFound } from '../pages';
 // import reactLogo from './assets/react.svg'
 import './App.css';
 
