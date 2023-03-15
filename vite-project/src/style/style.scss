@@ -53,8 +53,39 @@ html {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   min-width: 320px;
   min-height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.title {
+  margin: 35vh auto;
+  font-size: 5.5rem;
+}
+.notFound {
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+   justify-content: space-around;
+    height: 80vh;
+  }
+  &__title{
+    font-size: 4.5rem;
+  }
+  &__link {
+    font-size: 3rem;
+    cursor: pointer;
+  }
+
 }
