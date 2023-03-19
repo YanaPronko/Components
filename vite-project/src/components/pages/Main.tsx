@@ -1,8 +1,15 @@
 import { Component } from 'react';
+import CharactersList from '../charactersList/CharactersList';
+import SearchBar from '../searchBar/SearchBar';
 
 class Main extends Component {
   render() {
-    return <h1 className="title">Cards</h1>;
+    return (
+      <div className="wrapper">
+        <SearchBar />
+        <CharactersList />
+      </div>
+    );
   }
 }
 

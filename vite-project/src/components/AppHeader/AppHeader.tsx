@@ -16,7 +16,7 @@ class AppHeader extends Component {
   render() {
     return (
       <header className="header">
-        <h1 className="page__title">{this.state.pathName}</h1>
+        <h1 className="page__title">{this.state.pathName} page</h1>
         <nav className="menu">
           <ul className="menu-list">
             <li className="list-item">
