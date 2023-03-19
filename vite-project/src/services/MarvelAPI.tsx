@@ -35,17 +35,6 @@ class MarvelAPI {
     const result = await response.json();
     return result.data.results.map(transformCharactersData);
   };
-
-  // transformCharactersData = (character: ICharacter) => {
-  //   return {
-  //     id: character.id,
-  //     name: character.name,
-  //     thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
-  //     description: character.description
-  //       ? `${character.description.slice(0, 200)}...`
-  //       : 'There is no description',
-  //   };
-  // };
 }
 
 export default MarvelAPI;
