@@ -1,4 +1,4 @@
-interface ICharacter {
+export interface ICharacter {
   id: number;
   name: string;
   thumbnail: {
@@ -9,6 +9,16 @@ interface ICharacter {
   wiki?: string;
   home?: string;
 }
+export const transformCharactersData = (character: ICharacter) => {
+  return {
+    id: character.id,
+    name: character.name,
+    thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
+    description: character.description
+      ? `${character.description.slice(0, 200)}...`
+      : 'There is no description',
+  };
+};
 
 class MarvelAPI {
   baseUrl = 'https://gateway.marvel.com:443/v1/public/';
@@ -23,19 +33,19 @@ class MarvelAPI {
       throw new Error(`Couldn't fetch ${this.baseUrl} with status ${response.status}`);
     }
     const result = await response.json();
-    return result.data.results.map(this.transformCharactersData);
+    return result.data.results.map(transformCharactersData);
   };
 
-  transformCharactersData = (character: ICharacter) => {
-    return {
-      id: character.id,
-      name: character.name,
-      thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
-      description: character.description
-        ? `${character.description.slice(0, 200)}...`
-        : 'There is no description',
-    };
-  };
+  // transformCharactersData = (character: ICharacter) => {
+  //   return {
+  //     id: character.id,
+  //     name: character.name,
+  //     thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
+  //     description: character.description
+  //       ? `${character.description.slice(0, 200)}...`
+  //       : 'There is no description',
+  //   };
+  // };
 }
 
 export default MarvelAPI;

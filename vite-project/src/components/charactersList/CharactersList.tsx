@@ -1,35 +1,35 @@
 import { Component } from 'react';
-import MarvelAPI from '../../services/MarvelAPI';
+import { ITransformedCharacters } from '../pages/Main';
+// import MarvelAPI from '../../services/MarvelAPI';
 
 import './charactersList.scss';
 
-interface IState {
-  characters: ITransformedCharacters[] | [];
-  itemsLoading: boolean;
-  error: boolean;
-  offset: number;
-}
-interface ITransformedCharacters {
-  id: number;
-  name: string;
-  thumbnail: string;
-  description: string;
-}
-class CharactersList extends Component<Record<string, never>, IState> {
-  state = {
+// interface IState {
+//   characters: ITransformedCharacters[] | [];
+//   itemsLoading: boolean;
+//   error: boolean;
+//   offset: number;
+// }
+
+type Props = {
+  characters: ITransformedCharacters[];
+};
+
+class CharactersList extends Component<Props> {
+  /*  state = {
     characters: [],
     itemsLoading: true,
     error: false,
     offset: 510,
-  };
+  }; */
 
-  marvelAPI = new MarvelAPI();
+  // marvelAPI = new MarvelAPI();
 
-  componentDidMount() {
+  /*   componentDidMount() {
     this.marvelAPI.getAllCharacters(this.state.offset).then(this.onItemsLoaded).catch(this.onError);
   }
-
-  onItemsLoaded = (items: ITransformedCharacters[]) => {
+ */
+  /*  onItemsLoaded = (items: ITransformedCharacters[]) => {
     this.setState(({ characters }) => ({
       characters: [...characters, ...items],
     }));
@@ -37,7 +37,7 @@ class CharactersList extends Component<Record<string, never>, IState> {
 
   onError = () => {
     this.setState({ error: true });
-  };
+  }; */
 
   renderCharacters(characters: ITransformedCharacters[]) {
     const items = characters.map(({ id, name, description, thumbnail }) => {
@@ -57,7 +57,7 @@ class CharactersList extends Component<Record<string, never>, IState> {
   }
 
   render() {
-    const charactersList = this.renderCharacters(this.state.characters);
+    const charactersList = this.renderCharacters(this.props.characters);
     return <div className="char__list">{charactersList}</div>;
   }
 }

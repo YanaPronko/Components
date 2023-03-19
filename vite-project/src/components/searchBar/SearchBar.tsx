@@ -31,7 +31,6 @@ class SearchBar extends Component {
           value={this.state.value}
           onChange={this.onUpdateSearch}
         />
-        <i className="fa-solid fa-magnifying-glass"></i>
       </>
     );
   }
