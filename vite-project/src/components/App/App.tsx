@@ -2,8 +2,8 @@ import { Component } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import AppHeader from '../appHeader/AppHeader';
-import { Home, Main, NotFound } from '../pages';
-// import reactLogo from './assets/react.svg'
+import { Home, Main, NotFound, FormPage } from '../pages';
+
 import './App.scss';
 
 class App extends Component {
@@ -15,8 +15,9 @@ class App extends Component {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="main" element={<Main />} />
+              <Route path="/main" element={<Main />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/form" element={<FormPage />} />
             </Routes>
           </main>
         </div>
