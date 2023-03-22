@@ -16,29 +16,6 @@ type Props = {
 };
 
 class CharactersList extends Component<Props> {
-  /*  state = {
-    characters: [],
-    itemsLoading: true,
-    error: false,
-    offset: 510,
-  }; */
-
-  // marvelAPI = new MarvelAPI();
-
-  /*   componentDidMount() {
-    this.marvelAPI.getAllCharacters(this.state.offset).then(this.onItemsLoaded).catch(this.onError);
-  }
- */
-  /*  onItemsLoaded = (items: ITransformedCharacters[]) => {
-    this.setState(({ characters }) => ({
-      characters: [...characters, ...items],
-    }));
-  };
-
-  onError = () => {
-    this.setState({ error: true });
-  }; */
-
   renderCharacters(characters: ITransformedCharacters[]) {
     const items = characters.map(({ id, name, description, thumbnail }) => {
       const imgStyle =
@@ -47,7 +24,7 @@ class CharactersList extends Component<Props> {
           : 'cover';
       return (
         <li className="char__item" key={id}>
-          <img src={thumbnail} alt={name} className={imgStyle} /* style={imgStyle} */ />
+          <img src={thumbnail} alt={name} className={imgStyle} />
           <div className="char__name">{name}</div>
           <div className="char__descr">{description}</div>
         </li>
