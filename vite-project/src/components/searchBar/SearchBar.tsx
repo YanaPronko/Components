@@ -8,12 +8,10 @@ class SearchBar extends Component {
 
   onUpdateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // localStorage.setItem('inputValue', `${value}`);
     this.setState({ value });
   };
 
   componentWillUnmount() {
-    console.log('unmount');
     localStorage.setItem('inputValue', `${this.state.value}`);
   }
 

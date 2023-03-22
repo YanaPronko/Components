@@ -1,15 +1,7 @@
 import { Component } from 'react';
 import { ITransformedCharacters } from '../pages/Main';
-// import MarvelAPI from '../../services/MarvelAPI';
 
 import './charactersList.scss';
-
-// interface IState {
-//   characters: ITransformedCharacters[] | [];
-//   itemsLoading: boolean;
-//   error: boolean;
-//   offset: number;
-// }
 
 type Props = {
   characters: ITransformedCharacters[];

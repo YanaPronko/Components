@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import AppHeader from '../appHeader/AppHeader';
 import { Home, Main, NotFound } from '../pages';
-// import reactLogo from './assets/react.svg'
+
 import './App.scss';
 
 class App extends Component {
