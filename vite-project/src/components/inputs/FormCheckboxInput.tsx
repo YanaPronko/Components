@@ -1,11 +1,8 @@
-import { Component, RefObject } from 'react';
+import { Component } from 'react';
+import { RefProps } from '../form/Form';
 import '../form/form.scss';
 
-type Props = {
-  reference: RefObject<HTMLInputElement>;
-};
-
-class FormCheckboxInput extends Component<Props> {
+class FormCheckboxInput extends Component<RefProps> {
   render() {
     return (
       <div className="policy">

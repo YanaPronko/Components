@@ -10,6 +10,7 @@ class FormRadioInput extends Component<Props> {
     return (
       <div className="gender-details">
         <input
+          className="input"
           type="radio"
           name="gender"
           id="dot-1"
@@ -19,6 +20,7 @@ class FormRadioInput extends Component<Props> {
           ref={this.props.reference[0]}
         />
         <input
+          className="input"
           type="radio"
           name="gender"
           id="dot-2"
@@ -27,6 +29,7 @@ class FormRadioInput extends Component<Props> {
           ref={this.props.reference[1]}
         />
         <input
+          className="input"
           type="radio"
           name="gender"
           id="dot-3"

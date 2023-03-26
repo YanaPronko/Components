@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { Component, FormEvent } from 'react';
 import {
   FormCheckboxInput,
@@ -13,6 +13,10 @@ import { IValidCard } from '../pages/FormPage';
 
 type Props = {
   setValidData: (object: IValidCard) => void;
+};
+type References = (HTMLInputElement | HTMLSelectElement | null)[];
+export type RefProps = {
+  reference: RefObject<HTMLInputElement>;
 };
 
 import './form.scss';
@@ -52,7 +56,7 @@ class Form extends Component<Props> {
     return references;
   };
 
-  checkInputs = (arr: (HTMLInputElement | HTMLSelectElement | null)[], dataForCard: IValidCard) => {
+  checkInputs = (arr: References, dataForCard: IValidCard) => {
     if (arr)
       arr.forEach((input) => {
         if (!input?.validity.valid) {
@@ -64,9 +68,7 @@ class Form extends Component<Props> {
           if (input instanceof HTMLInputElement) {
             switch (type) {
               case 'radio':
-                console.log(input.checked);
                 if (!input.checked) {
-                  console.log(input.checked);
                   return;
                 } else {
                   dataForCard[input.name as keyof IValidCard] = input.value;
@@ -90,10 +92,20 @@ class Form extends Component<Props> {
       });
   };
 
+  handleAfterInputValidation = (e: FormEvent, data: IValidCard, arr: References) => {
+    const target = e.target;
+
+    if (target instanceof HTMLFormElement) {
+      if (target.checkValidity()) {
+        this.props.setValidData(data);
+        target.reset();
+        arr.forEach((input) => input?.classList.remove('submitted'));
+      }
+    }
+  };
+
   handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    const target = e.target;
 
     const dataForCard: IValidCard = {
       fullname: '',
@@ -105,15 +117,7 @@ class Form extends Component<Props> {
     };
     const references = this.getRefs();
     this.checkInputs(references, dataForCard);
-
-    if (target instanceof HTMLFormElement) {
-      if (target.checkValidity()) {
-        console.log(dataForCard);
-        this.props.setValidData(dataForCard);
-        target.reset();
-        references.forEach((input) => input?.classList.remove('submitted'));
-      }
-    }
+    this.handleAfterInputValidation(e, dataForCard, references);
   };
 
   render() {

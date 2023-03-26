@@ -1,11 +1,8 @@
-import { Component, RefObject } from 'react';
+import { Component } from 'react';
+import { RefProps } from '../form/Form';
 import '../form/form.scss';
 
-type Props = {
-  reference: RefObject<HTMLInputElement>;
-};
-
-class FormDateInput extends Component<Props> {
+class FormDateInput extends Component<RefProps> {
   render() {
     return (
       <div className="input-field">
