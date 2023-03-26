@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.53% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>62/67</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>60/60</span>
+                <span class='fraction'>62/67</span>
             </div>
         
             
@@ -123,7 +123,14 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -131,11 +138,18 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,14 +202,21 @@ import { NavLink } from 'react-router-dom';
 import './appHeader.scss';
 &nbsp;
 class AppHeader extends Component {
-  state = {
-    path: window.location.pathname,
+  getPath = () =&gt; {
+    return window.location.pathname === '/'
+      ? <span class="branch-0 cbranch-no" title="branch not covered" >'ABOUT'</span>
+<span class="cstat-no" title="statement not covered" >      : window.location.pathname.slice(1).toUpperCase();</span>
   };
-  /*
-  handleLinkClick = () =&gt; {
-    return (this.path =
-      window.location.pathname === '/' ? 'ABOUT' : window.location.pathname.slice(1).toUpperCase());
-  }; */
+&nbsp;
+  state = {
+    path: this.getPath(),
+  };
+&nbsp;
+  handleLinkClick = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    this.setState(() =&gt; ({</span>
+<span class="cstat-no" title="statement not covered" >      path: this.getPath(),</span>
+<span class="cstat-no" title="statement not covered" >    }));</span>
+<span class="cstat-no" title="statement not covered" >  };</span>
 &nbsp;
   render() {
     return (
@@ -209,7 +230,7 @@ class AppHeader extends Component {
                 className="menu-link"
                 style={({ isActive }) =&gt; ({ color: isActive ? <span class="branch-0 cbranch-no" title="branch not covered" >'#9F0013' : '#000000' }</span>)}
                 to="/"
-                // onClick={this.handleLinkClick}
+                onClick={this.handleLinkClick}
               &gt;
                 About us
               &lt;/NavLink&gt;
@@ -220,7 +241,7 @@ class AppHeader extends Component {
                 className="menu-link"
                 style={({ isActive }) =&gt; ({ color: <span class="branch-0 cbranch-no" title="branch not covered" >isActive ? '#9F0013' : '</span>#000000' })}
                 to="main"
-                // onClick={this.handleLinkClick}
+                onClick={this.handleLinkClick}
               &gt;
                 Main
               &lt;/NavLink&gt;
@@ -231,7 +252,7 @@ class AppHeader extends Component {
                 className="menu-link"
                 style={({ isActive }) =&gt; ({ color: <span class="branch-0 cbranch-no" title="branch not covered" >isActive ? '#9F0013' : '</span>#000000' })}
                 to="form"
-                // onClick={this.handleLinkClick}
+                onClick={this.handleLinkClick}
               &gt;
                 Form
               &lt;/NavLink&gt;
@@ -250,7 +271,7 @@ export default AppHeader;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-26T14:34:20.712Z
+                at 2023-03-26T15:04:36.967Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -3,14 +3,21 @@ import { NavLink } from 'react-router-dom';
 import './appHeader.scss';
 
 class AppHeader extends Component {
-  state = {
-    path: window.location.pathname,
+  getPath = () => {
+    return window.location.pathname === '/'
+      ? 'ABOUT'
+      : window.location.pathname.slice(1).toUpperCase();
   };
-  /*
+
+  state = {
+    path: this.getPath(),
+  };
+
   handleLinkClick = () => {
-    return (this.path =
-      window.location.pathname === '/' ? 'ABOUT' : window.location.pathname.slice(1).toUpperCase());
-  }; */
+    this.setState(() => ({
+      path: this.getPath(),
+    }));
+  };
 
   render() {
     return (
@@ -24,7 +31,7 @@ class AppHeader extends Component {
                 className="menu-link"
                 style={({ isActive }) => ({ color: isActive ? '#9F0013' : '#000000' })}
                 to="/"
-                // onClick={this.handleLinkClick}
+                onClick={this.handleLinkClick}
               >
                 About us
               </NavLink>
@@ -35,7 +42,7 @@ class AppHeader extends Component {
                 className="menu-link"
                 style={({ isActive }) => ({ color: isActive ? '#9F0013' : '#000000' })}
                 to="main"
-                // onClick={this.handleLinkClick}
+                onClick={this.handleLinkClick}
               >
                 Main
               </NavLink>
@@ -46,7 +53,7 @@ class AppHeader extends Component {
                 className="menu-link"
                 style={({ isActive }) => ({ color: isActive ? '#9F0013' : '#000000' })}
                 to="form"
-                // onClick={this.handleLinkClick}
+                onClick={this.handleLinkClick}
               >
                 Form
               </NavLink>

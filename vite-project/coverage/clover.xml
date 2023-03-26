@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679841261260" clover="3.2.0">
-  <project timestamp="1679841261260" name="All files">
-    <metrics statements="716" coveredstatements="487" conditionals="35" coveredconditionals="29" methods="43" coveredmethods="28" elements="794" coveredelements="544" complexity="0" loc="716" ncloc="716" packages="9" files="19" classes="19"/>
+<coverage generated="1679843077546" clover="3.2.0">
+  <project timestamp="1679843077546" name="All files">
+    <metrics statements="719" coveredstatements="486" conditionals="37" coveredconditionals="30" methods="45" coveredmethods="29" elements="801" coveredelements="545" complexity="0" loc="719" ncloc="719" packages="9" files="19" classes="19"/>
     <package name="components.app">
       <metrics statements="29" coveredstatements="29" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="C:\Учеба\RSSchool\REACT\Components\Components\vite-project\src\components\app\App.tsx">
@@ -38,69 +38,76 @@
       </file>
     </package>
     <package name="components.appHeader">
-      <metrics statements="60" coveredstatements="60" conditionals="8" coveredconditionals="5" methods="5" coveredmethods="5"/>
+      <metrics statements="67" coveredstatements="62" conditionals="10" coveredconditionals="6" methods="7" coveredmethods="6"/>
       <file name="AppHeader.tsx" path="C:\Учеба\RSSchool\REACT\Components\Components\vite-project\src\components\appHeader\AppHeader.tsx">
-        <metrics statements="60" coveredstatements="60" conditionals="8" coveredconditionals="5" methods="5" coveredmethods="5"/>
+        <metrics statements="67" coveredstatements="62" conditionals="10" coveredconditionals="6" methods="7" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="9" count="0" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="22" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
+        <line num="32" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
-        <line num="36" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
+        <line num="43" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="44" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
-        <line num="47" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="1" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
+        <line num="54" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="55" count="1" type="stmt"/>
         <line num="56" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
         <line num="59" count="1" type="stmt"/>
         <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.charactersList">
@@ -144,9 +151,9 @@
       </file>
     </package>
     <package name="components.form">
-      <metrics statements="146" coveredstatements="34" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="5"/>
+      <metrics statements="145" coveredstatements="34" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="5"/>
       <file name="Form.tsx" path="C:\Учеба\RSSchool\REACT\Components\Components\vite-project\src\components\form\Form.tsx">
-        <metrics statements="146" coveredstatements="34" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="5"/>
+        <metrics statements="145" coveredstatements="34" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -290,13 +297,12 @@
         <line num="141" count="0" type="stmt"/>
         <line num="142" count="0" type="stmt"/>
         <line num="143" count="0" type="stmt"/>
-        <line num="144" count="0" type="stmt"/>
+        <line num="144" count="1" type="stmt"/>
         <line num="145" count="1" type="stmt"/>
-        <line num="146" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.inputs">
-      <metrics statements="211" coveredstatements="164" conditionals="3" coveredconditionals="3" methods="7" coveredmethods="3"/>
+      <metrics statements="208" coveredstatements="161" conditionals="3" coveredconditionals="3" methods="7" coveredmethods="3"/>
       <file name="FormCheckboxInput.tsx" path="C:\Учеба\RSSchool\REACT\Components\Components\vite-project\src\components\inputs\FormCheckboxInput.tsx">
         <metrics statements="23" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -477,16 +483,16 @@
         <line num="32" count="1" type="stmt"/>
       </file>
       <file name="FormTextInput.tsx" path="C:\Учеба\RSSchool\REACT\Components\Components\vite-project\src\components\inputs\FormTextInput.tsx">
-        <metrics statements="32" coveredstatements="32" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="29" coveredstatements="29" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
@@ -507,9 +513,6 @@
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
       </file>
       <file name="index.tsx" path="C:\Учеба\RSSchool\REACT\Components\Components\vite-project\src\components\inputs\index.tsx">
         <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>

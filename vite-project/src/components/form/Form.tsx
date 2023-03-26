@@ -61,7 +61,6 @@ class Form extends Component<Props> {
       arr.forEach((input) => {
         if (!input?.validity.valid) {
           input?.classList.add('submitted');
-          console.log('invalid');
           return false;
         } else {
           const type = input.type ? input.type : input.tagName;
