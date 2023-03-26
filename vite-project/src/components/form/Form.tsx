@@ -21,27 +21,27 @@ export type RefProps = {
 
 import './form.scss';
 
-class Form extends Component<Props> {
-  textInputRef = React.createRef<HTMLInputElement>();
-  dateInputRef = React.createRef<HTMLInputElement>();
-  checkboxInputRef = React.createRef<HTMLInputElement>();
-  selectInputRef = React.createRef<HTMLSelectElement>();
-  radioMaleInputRef = React.createRef<HTMLInputElement>();
-  radioFemaleInputRef = React.createRef<HTMLInputElement>();
-  radioOtherInputRef = React.createRef<HTMLInputElement>();
-  fileInputRef = React.createRef<HTMLInputElement>();
+export const textInputRef = React.createRef<HTMLInputElement>();
+export const dateInputRef = React.createRef<HTMLInputElement>();
+export const checkboxInputRef = React.createRef<HTMLInputElement>();
+export const selectInputRef = React.createRef<HTMLSelectElement>();
+export const radioMaleInputRef = React.createRef<HTMLInputElement>();
+export const radioFemaleInputRef = React.createRef<HTMLInputElement>();
+export const radioOtherInputRef = React.createRef<HTMLInputElement>();
+export const fileInputRef = React.createRef<HTMLInputElement>();
 
+class Form extends Component<Props> {
   getRefs = () => {
     const references = [];
 
-    const textInput = this.textInputRef.current;
-    const dateInput = this.dateInputRef.current;
-    const checkboxInput = this.checkboxInputRef.current;
-    const selectInput = this.selectInputRef.current;
-    const radioMaleInput = this.radioMaleInputRef.current;
-    const radioFemaleInput = this.radioFemaleInputRef.current;
-    const radioOtherleInput = this.radioOtherInputRef.current;
-    const fileInput = this.fileInputRef.current;
+    const textInput = textInputRef.current;
+    const dateInput = dateInputRef.current;
+    const checkboxInput = checkboxInputRef.current;
+    const selectInput = selectInputRef.current;
+    const radioMaleInput = radioMaleInputRef.current;
+    const radioFemaleInput = radioFemaleInputRef.current;
+    const radioOtherleInput = radioOtherInputRef.current;
+    const fileInput = fileInputRef.current;
 
     references.push(
       textInput,
@@ -125,18 +125,14 @@ class Form extends Component<Props> {
       <form className="form" onSubmit={this.handleSubmit} noValidate>
         <div className="content">
           <div className="user-details">
-            <FormTextInput reference={this.textInputRef} />
-            <FormDateInput reference={this.dateInputRef} />
+            <FormTextInput reference={textInputRef} />
+            <FormDateInput reference={dateInputRef} />
             <FormRadioInput
-              reference={[
-                this.radioMaleInputRef,
-                this.radioFemaleInputRef,
-                this.radioOtherInputRef,
-              ]}
+              reference={[radioMaleInputRef, radioFemaleInputRef, radioOtherInputRef]}
             />
-            <FormSelectInput reference={this.selectInputRef} />
-            <FormFileInput reference={this.fileInputRef} />
-            <FormCheckboxInput reference={this.checkboxInputRef} />
+            <FormSelectInput reference={selectInputRef} />
+            <FormFileInput reference={fileInputRef} />
+            <FormCheckboxInput reference={checkboxInputRef} />
             <div className="button">
               <input type="submit" value="Register" />
             </div>

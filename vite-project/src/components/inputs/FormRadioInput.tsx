@@ -12,6 +12,7 @@ class FormRadioInput extends Component<Props> {
         <input
           className="input"
           type="radio"
+          role="radio"
           name="gender"
           id="dot-1"
           value="male"

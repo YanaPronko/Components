@@ -39,7 +39,6 @@ class FormPage extends Component<Record<string, never>, State> {
 
   render() {
     const isValid = this.state.isValid;
-    const message = isValid ? <Message /> : null;
     setTimeout(() => {
       this.setState(() => ({
         isValid: false,
@@ -48,7 +47,7 @@ class FormPage extends Component<Record<string, never>, State> {
     return (
       <>
         <Form setValidData={this.setValidData} />
-        {message}
+        {isValid && <Message />}
         <ul className="cards__list">
           {this.state.validData.map((object, ind) => {
             return <ValidCard item={object} key={ind} />;

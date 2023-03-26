@@ -9,8 +9,16 @@ class FormSelectInput extends Component<Props> {
   render() {
     return (
       <div className="input-field">
-        <label className="details">Country</label>
-        <select className="input select-input" name="country" ref={this.props.reference} required>
+        <label htmlFor="select" className="details">
+          Country
+        </label>
+        <select
+          className="input select-input"
+          id="select"
+          name="country"
+          ref={this.props.reference}
+          required
+        >
           <option value="">Select country</option>
           <option>Belarus</option>
           <option>Russian Federation</option>

@@ -1,4 +1,4 @@
-import { Component, RefObject } from 'react';
+import { Component } from 'react';
 import { RefProps } from '../form/Form';
 import '../form/form.scss';
 
