@@ -1,0 +1,31 @@
+@import '../../style/variables.scss';
+
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.card {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 20%;
+    color: $light-color;
+    background-color: $dark-color;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .25);
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s transform;
+  }
+  &__name {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  &__string {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+}
