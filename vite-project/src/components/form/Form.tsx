@@ -9,7 +9,7 @@ import {
   FormTextInput,
 } from '../inputs';
 
-import { IValidCard } from '../pages/FormPage';
+import { IValidCardStringFields, IValidCard } from '../pages/FormPage';
 
 type Props = {
   setValidData: (object: IValidCard) => void;
@@ -70,22 +70,22 @@ class Form extends Component<Props> {
                 if (!input.checked) {
                   return;
                 } else {
-                  dataForCard[input.name as keyof IValidCard] = input.value;
+                  dataForCard[input.name as IValidCardStringFields] = input.value;
                 }
                 break;
               case 'file':
                 if (input.files) {
-                  dataForCard[input.name as keyof IValidCard] = input.files[0].name;
+                  dataForCard[input.name as 'pathToFile'] = input.files[0];
                 }
                 break;
               case 'checkbox':
-                dataForCard[input.name as keyof IValidCard] = 'accept terms';
+                dataForCard[input.name as IValidCardStringFields] = 'accept terms';
                 break;
               default:
-                dataForCard[input.name as keyof IValidCard] = input.value;
+                dataForCard[input.name as IValidCardStringFields] = input.value;
             }
           } else {
-            dataForCard[input.name as keyof IValidCard] = input.value;
+            dataForCard[input.name as IValidCardStringFields] = input.value;
           }
         }
       });
@@ -111,7 +111,7 @@ class Form extends Component<Props> {
       date: '',
       gender: '',
       country: '',
-      pathToFile: '',
+      pathToFile: null,
       accept: '',
     };
     const references = this.getRefs();

@@ -5,14 +5,17 @@ import Form from '../form/Form';
 
 import '../validCard/validCard.scss';
 
-export interface IValidCard {
+export type IValidCard = {
   fullname: string;
   date: string;
   gender: string;
   country: string;
-  pathToFile: string;
+  pathToFile: File | null;
   accept: string;
-}
+};
+
+export type IValidCardStringFields = 'accept' | 'date' | 'country' | 'fullname' | 'gender';
+
 type State = {
   validData: IValidCard[] | [];
   isValid: boolean;
