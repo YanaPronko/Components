@@ -15,7 +15,7 @@ class FormTextInput extends Component<RefProps> {
           name="fullname"
           type="text"
           placeholder="Enter your name"
-          pattern="^[A-Za-z0-9]{3,16}$"
+          pattern="^[A-Za-zа-яёА-ЯЁ0-9]{3,16}$"
           ref={this.props.reference}
           required
         />
