@@ -5,25 +5,22 @@ import AppHeader from '../appHeader/AppHeader';
 import { Home, Main, NotFound, FormPage } from '../pages';
 
 import './App.scss';
-
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="app">
-          <AppHeader />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/main" element={<Main />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/form" element={<FormPage />} />
-            </Routes>
-          </main>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+const App = () => {
+  return (
+    <BrowserRouter>
+      <div className="app">
+        <AppHeader />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/main" element={<Main />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/form" element={<FormPage />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default App;
