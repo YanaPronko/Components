@@ -7,24 +7,21 @@ const SearchBar = () => {
   const inputValueRef = useRef(inputValue);
 
   useEffect(() => {
-    setInputValue(localStorage.getItem('inputValue') || '');
-    return () => localStorage.setItem('inputValue', `${inputValue}`);
-  }, []);
+    inputValueRef.current = inputValue;
+  }, [inputValue]);
 
   useEffect(() => {
-    inputValueRef.current = inputValue;
+    const savedInputValue = localStorage.getItem('inputValue');
+    if (savedInputValue) setInputValue(savedInputValue);
+
     return () => localStorage.setItem('inputValue', `${inputValueRef.current}`);
-  }, [inputValue]);
+  }, []);
 
   const onUpdateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
   };
-  console.log(inputValue);
 
-  // componentWillUnmount() {
-  //   localStorage.setItem('inputValue', `${this.state.value}`);
-  // }
   return (
     <>
       <input

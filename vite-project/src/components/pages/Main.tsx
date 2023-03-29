@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import CharactersList from '../charactersList/CharactersList';
 import SearchBar from '../searchBar/SearchBar';
 import MarvelAPI from '../../services/MarvelAPI';
@@ -9,6 +9,7 @@ export interface ITransformedCharacters {
   thumbnail: string;
   description: string;
 }
+const marvelAPI = new MarvelAPI();
 
 const Main = () => {
   const [characters, setCharacters] = useState<ITransformedCharacters[] | []>([]);
@@ -25,15 +26,13 @@ const Main = () => {
     setError(true);
   };
 
-  const marvelAPI = new MarvelAPI();
-
-  const getCharacters = () => {
+  const getCharacters = useCallback(() => {
     marvelAPI.getAllCharacters(offset).then(onItemsLoaded).catch(onError);
-  };
+  }, []);
 
   useEffect(() => {
     getCharacters();
-  }, []);
+  }, [getCharacters]);
 
   return (
     <div className="wrapper">
