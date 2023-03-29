@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import CharactersList from '../charactersList/CharactersList';
 import SearchBar from '../searchBar/SearchBar';
 import MarvelAPI from '../../services/MarvelAPI';
@@ -9,44 +9,38 @@ export interface ITransformedCharacters {
   thumbnail: string;
   description: string;
 }
-interface IState {
-  characters: ITransformedCharacters[] | [];
-  itemsLoading: boolean;
-  error: boolean;
-  offset: number;
-}
 
-class Main extends Component<Record<string, never>, IState> {
-  state = {
-    characters: [],
-    itemsLoading: true,
-    error: false,
-    offset: 510,
+const Main = () => {
+  const [characters, setCharacters] = useState<ITransformedCharacters[] | []>([]);
+
+  const [error, setError] = useState(false);
+
+  const offset = 510;
+
+  const onItemsLoaded = (items: ITransformedCharacters[]) => {
+    setCharacters((characters: ITransformedCharacters[] | []) => [...characters, ...items]);
   };
 
-  onItemsLoaded = (items: ITransformedCharacters[]) => {
-    this.setState(({ characters }) => ({
-      characters: [...characters, ...items],
-    }));
+  const onError = () => {
+    setError(true);
   };
 
-  onError = () => {
-    this.setState({ error: true });
+  const marvelAPI = new MarvelAPI();
+
+  const getCharacters = () => {
+    marvelAPI.getAllCharacters(offset).then(onItemsLoaded).catch(onError);
   };
 
-  marvelAPI = new MarvelAPI();
-  componentDidMount() {
-    this.marvelAPI.getAllCharacters(this.state.offset).then(this.onItemsLoaded).catch(this.onError);
-  }
+  useEffect(() => {
+    getCharacters();
+  }, []);
 
-  render() {
-    return (
-      <div className="wrapper">
-        <SearchBar />
-        <CharactersList characters={this.state.characters} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="wrapper">
+      <SearchBar />
+      <CharactersList characters={characters} />
+    </div>
+  );
+};
 
 export default Main;

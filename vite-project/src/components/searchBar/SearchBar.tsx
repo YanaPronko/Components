@@ -1,32 +1,40 @@
-import { ChangeEvent, Component } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import './searchBar.scss';
 
-class SearchBar extends Component {
-  state = {
-    value: localStorage.getItem('inputValue') || '',
-  };
+const SearchBar = () => {
+  const [inputValue, setInputValue] = useState('');
 
-  onUpdateSearch = (e: ChangeEvent<HTMLInputElement>) => {
+  const inputValueRef = useRef(inputValue);
+
+  useEffect(() => {
+    setInputValue(localStorage.getItem('inputValue') || '');
+    return () => localStorage.setItem('inputValue', `${inputValue}`);
+  }, []);
+
+  useEffect(() => {
+    inputValueRef.current = inputValue;
+    return () => localStorage.setItem('inputValue', `${inputValueRef.current}`);
+  }, [inputValue]);
+
+  const onUpdateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    this.setState({ value });
+    setInputValue(value);
   };
+  console.log(inputValue);
 
-  componentWillUnmount() {
-    localStorage.setItem('inputValue', `${this.state.value}`);
-  }
-
-  render() {
-    return (
-      <>
-        <input
-          className="search__bar"
-          type="text"
-          placeholder="Search ..."
-          value={this.state.value}
-          onChange={this.onUpdateSearch}
-        />
-      </>
-    );
-  }
-}
+  // componentWillUnmount() {
+  //   localStorage.setItem('inputValue', `${this.state.value}`);
+  // }
+  return (
+    <>
+      <input
+        className="search__bar"
+        type="text"
+        placeholder="Search ..."
+        value={inputValue}
+        onChange={onUpdateSearch}
+      />
+    </>
+  );
+};
 export default SearchBar;

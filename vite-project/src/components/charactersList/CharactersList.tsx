@@ -1,14 +1,13 @@
-import { Component } from 'react';
 import { ITransformedCharacters } from '../pages/Main';
 
 import './charactersList.scss';
 
-type Props = {
-  characters: ITransformedCharacters[];
-};
+interface CharactersListProps {
+  characters: ITransformedCharacters[] | [];
+}
 
-class CharactersList extends Component<Props> {
-  renderCharacters(characters: ITransformedCharacters[]) {
+const CharactersList: React.FC<CharactersListProps> = ({ characters }) => {
+  const renderCharacters = (characters: ITransformedCharacters[]) => {
     const items = characters.map(({ id, name, description, thumbnail }) => {
       const imgStyle =
         thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
@@ -23,12 +22,10 @@ class CharactersList extends Component<Props> {
       );
     });
     return <ul className="char__grid">{items}</ul>;
-  }
+  };
 
-  render() {
-    const charactersList = this.renderCharacters(this.props.characters);
-    return <div className="char__list">{charactersList}</div>;
-  }
-}
+  const charactersList = renderCharacters(characters);
+  return <div className="char__list">{charactersList}</div>;
+};
 
 export default CharactersList;
