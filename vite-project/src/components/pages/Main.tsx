@@ -14,7 +14,7 @@ const marvelAPI = new MarvelAPI();
 const Main = () => {
   const [characters, setCharacters] = useState<ITransformedCharacters[] | []>([]);
 
-  const [error, setError] = useState(false);
+  const [, setError] = useState(false);
 
   const offset = 510;
 
