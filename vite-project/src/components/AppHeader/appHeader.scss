@@ -1,0 +1,28 @@
+@import '../../style/variables.scss';
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+.page__title {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 37px;
+  text-transform: uppercase;
+  color: $main-color;
+}
+.menu {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    li {
+      margin: 0 8px;
+      a:hover {
+        color: $main-color;
+      }
+    }
+  }
+}
