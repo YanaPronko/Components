@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import CharactersList from '../charactersList/CharactersList';
 import SearchBar from '../searchBar/SearchBar';
 import MarvelAPI from '../../services/MarvelAPI';
+import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 
 export interface ITransformedCharacters {
   id: number;
@@ -13,17 +14,19 @@ const marvelAPI = new MarvelAPI();
 
 const Main = () => {
   const [characters, setCharacters] = useState<ITransformedCharacters[] | []>([]);
-
-  const [, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const offset = 510;
 
   const onItemsLoaded = (items: ITransformedCharacters[]) => {
     setCharacters((characters: ITransformedCharacters[] | []) => [...characters, ...items]);
+    setIsLoading(false);
   };
 
   const onError = () => {
     setError(true);
+    setIsLoading(false);
   };
 
   const getCharacters = useCallback(() => {
@@ -37,7 +40,9 @@ const Main = () => {
   return (
     <div className="wrapper">
       <SearchBar />
-      <CharactersList characters={characters} />
+      <ErrorBoundary>
+        <CharactersList characters={characters} error={error} isLoading={isLoading} />
+      </ErrorBoundary>
     </div>
   );
 };

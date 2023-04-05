@@ -1,12 +1,16 @@
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import { ITransformedCharacters } from '../pages/Main';
+import Spinner from '../spinner/Spinner';
 
 import './charactersList.scss';
 
 interface CharactersListProps {
   characters: ITransformedCharacters[] | [];
+  error: boolean;
+  isLoading: boolean;
 }
 
-const CharactersList: React.FC<CharactersListProps> = ({ characters }) => {
+const CharactersList: React.FC<CharactersListProps> = ({ characters, error, isLoading }) => {
   const renderCharacters = (characters: ITransformedCharacters[]) => {
     const items = characters.map(({ id, name, description, thumbnail }) => {
       const imgStyle =
@@ -25,7 +29,13 @@ const CharactersList: React.FC<CharactersListProps> = ({ characters }) => {
   };
 
   const charactersList = renderCharacters(characters);
-  return <div className="char__list">{charactersList}</div>;
+  return (
+    <>
+      {isLoading && <Spinner />}
+      {error && <ErrorMessage />}
+      <div className="char__list">{charactersList}</div>
+    </>
+  );
 };
 
 export default CharactersList;

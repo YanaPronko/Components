@@ -21,7 +21,7 @@ export const transformCharactersData = (character: ICharacter) => {
 };
 
 class MarvelAPI {
-  baseUrl = 'https://gateway.marvel.com:443/v1/public/';
+  baseUrl = 'https://gateway.marvel.com:443/v1/publiс/';
   apiKey = '3bc0075bdf9cab04a01fcd1a7e7d1b84';
   offset = 510;
 

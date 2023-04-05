@@ -1,0 +1,10 @@
+.error {
+  display: block;
+  width: 25rem;
+  height: 25rem;
+  object-fit: contain;
+  margin: 0 auto;
+  &__title {
+    margin: 1.5rem auto;
+  }
+}
