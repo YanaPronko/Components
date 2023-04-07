@@ -16,11 +16,12 @@ const Main = () => {
   const [characters, setCharacters] = useState<ITransformedCharacters[] | []>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [search, setSearch] = useState('');
 
   const offset = 510;
 
   const onItemsLoaded = (items: ITransformedCharacters[]) => {
-    setCharacters((characters: ITransformedCharacters[] | []) => [...characters, ...items]);
+    setCharacters(() => [...items]);
     setIsLoading(false);
   };
 
@@ -29,17 +30,16 @@ const Main = () => {
     setIsLoading(false);
   };
 
-  const getCharacters = useCallback(() => {
-    marvelAPI.getAllCharacters(offset).then(onItemsLoaded).catch(onError);
-  }, []);
-
   useEffect(() => {
+    const getCharacters = () => {
+      marvelAPI.getAllCharacters(offset, search).then(onItemsLoaded).catch(onError);
+    };
     getCharacters();
-  }, [getCharacters]);
+  }, [search]);
 
   return (
     <div className="wrapper">
-      <SearchBar />
+      <SearchBar setSearch={setSearch} />
       <ErrorBoundary>
         <CharactersList characters={characters} error={error} isLoading={isLoading} />
       </ErrorBoundary>
