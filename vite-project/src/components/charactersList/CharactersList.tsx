@@ -8,9 +8,17 @@ interface CharactersListProps {
   characters: ITransformedCharacters[] | [];
   error: boolean;
   isLoading: boolean;
+  setSelectedCharID: (id: number) => void;
+  setActiveModal: (val: boolean) => void;
 }
 
-const CharactersList: React.FC<CharactersListProps> = ({ characters, error, isLoading }) => {
+const CharactersList: React.FC<CharactersListProps> = ({
+  characters,
+  error,
+  isLoading,
+  setSelectedCharID,
+  setActiveModal,
+}) => {
   const renderCharacters = (characters: ITransformedCharacters[]) => {
     const items = characters.map(({ id, name, description, thumbnail }) => {
       const imgStyle =
@@ -18,7 +26,14 @@ const CharactersList: React.FC<CharactersListProps> = ({ characters, error, isLo
           ? 'unset'
           : 'cover';
       return (
-        <li className="char__item" key={id}>
+        <li
+          className="char__item"
+          key={id}
+          onClick={() => {
+            setSelectedCharID(id);
+            setActiveModal(true);
+          }}
+        >
           <img src={thumbnail} alt={name} className={imgStyle} />
           <div className="char__name">{name}</div>
           <div className="char__descr">{description}</div>

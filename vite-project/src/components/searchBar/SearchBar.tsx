@@ -24,8 +24,7 @@ const SearchBar: FC<Props> = ({ setSearch }) => {
   const onUpdateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
-    const search = value === '' ? 'a' : value;
-    setSearch(search);
+    setSearch(value);
   };
 
   return (
