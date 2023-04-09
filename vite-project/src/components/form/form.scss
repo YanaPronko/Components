@@ -160,15 +160,15 @@ input[type="checkbox"]:checked {
   font-size: 1.5rem;
   padding: 0.5rem;
   color: red;
-  display: none;
+  display: block;
 }
-.input.submitted:invalid {
+.input:invalid {
   border: 1px solid red;
 }
 
-.input.submitted:invalid ~ .error-message {
+/* .input:invalid ~ .error-message {
   display: block;
-}
+} */
 
 
 @media(max-width: 584px){

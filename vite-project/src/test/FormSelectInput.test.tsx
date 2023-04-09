@@ -1,11 +1,10 @@
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import FormSelectInput from '../components/inputs/FormSelectInput';
-import { selectInputRef } from '../components/form/Form';
+import FormPage from '../components/pages/FormPage';
 
-describe('Render', () => {
+describe('Render Select input', () => {
   it('render', () => {
-    render(<FormSelectInput reference={selectInputRef} />);
+    render(<FormPage />);
     expect(screen.getByRole('combobox')).toBeInTheDocument();
     expect(screen.getByLabelText(/Country/i)).toBeInTheDocument();
   });

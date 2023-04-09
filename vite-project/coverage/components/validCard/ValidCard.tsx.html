@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.82% </span>
+                <span class="strong">45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/23</span>
+                <span class='fraction'>9/20</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.82% </span>
+                <span class="strong">45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/23</span>
+                <span class='fraction'>9/20</span>
             </div>
         
             
@@ -83,19 +83,13 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -109,28 +103,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component } from 'react';
-import { IValidCard } from '../pages/FormPage';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { IValidInputCard } from '../pages/FormPage';
 &nbsp;
-type Props = {
-  item: IValidCard;
-};
-&nbsp;
-class ValidCard extends Component&lt;Props&gt; {
-<span class="fstat-no" title="function not covered" >  render() {</span>
-<span class="cstat-no" title="statement not covered" >    const { fullname, date, gender, country, accept, pathToFile } = this.props.item;</span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
-<span class="cstat-no" title="statement not covered" >      &lt;li className="card__item"&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;h2 className="card__name"&gt;Full name: {fullname}&lt;/h2&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="card__string"&gt;Birthday: {date}&lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="card__string"&gt;Gender: {gender}&lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="card__string"&gt;Country: {country}&lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="card__string"&gt;Acccept: {accept}&lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;div className="card__string"&gt;Choosen file: {pathToFile}&lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/li&gt;</span>
-<span class="cstat-no" title="statement not covered" >    );</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+interface ItemProps {
+  item: IValidInputCard;
 }
+&nbsp;
+const ValidCard: React.FC&lt;ItemProps&gt; = <span class="fstat-no" title="function not covered" >({ item }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;li className="card__item"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;h2 className="card__name"&gt;Full name: {item.name}&lt;/h2&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="card__string"&gt;Birthday: {item.birthday}&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="card__string"&gt;Gender: {item.gender}&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="card__string"&gt;Country: {item.country}&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div className="card__string"&gt;Accept: {`${item.accept}`}&lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;img src={item.img} alt="file img" /&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/li&gt;</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+&nbsp;
 export default ValidCard;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -139,7 +130,7 @@ export default ValidCard;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-26T15:04:36.967Z
+                at 2023-04-05T11:03:52.827Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

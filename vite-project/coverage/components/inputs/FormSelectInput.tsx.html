@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>32/32</span>
+                <span class='fraction'>26/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/32</span>
+                <span class='fraction'>26/26</span>
             </div>
         
             
@@ -89,75 +89,57 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, RefObject } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import '../form/form.scss';
+import { InputProps } from '../pages/FormPage';
 &nbsp;
-type Props = {
-  reference: RefObject&lt;HTMLSelectElement&gt;;
+const FormSelectInput: React.FC&lt;InputProps&gt; = ({ register, id, errors, ...inputProps }) =&gt; {
+  return (
+    &lt;div className="input-field"&gt;
+      &lt;label htmlFor={id[0]} className="details"&gt;
+        Country
+      &lt;/label&gt;
+      &lt;select
+        className="input select-input"
+        id={id[0]}
+        {...register('country', { required: true })}
+        {...inputProps}
+      &gt;
+        &lt;option value=""&gt;Select country&lt;/option&gt;
+        &lt;option&gt;Belarus&lt;/option&gt;
+        &lt;option&gt;Russian Federation&lt;/option&gt;
+        &lt;option&gt;Other&lt;/option&gt;
+      &lt;/select&gt;
+      {errors?.<span class="branch-0 cbranch-no" title="branch not covered" >country &amp;&amp; &lt;p className="error-message"&gt;This field is required!&lt;/p&gt;}</span>
+    &lt;/div&gt;
+  );
 };
-&nbsp;
-class FormSelectInput extends Component&lt;Props&gt; {
-  render() {
-    return (
-      &lt;div className="input-field"&gt;
-        &lt;label htmlFor="select" className="details"&gt;
-          Country
-        &lt;/label&gt;
-        &lt;select
-          className="input select-input"
-          id="select"
-          name="country"
-          ref={this.props.reference}
-          required
-        &gt;
-          &lt;option value=""&gt;Select country&lt;/option&gt;
-          &lt;option&gt;Belarus&lt;/option&gt;
-          &lt;option&gt;Russian Federation&lt;/option&gt;
-          &lt;option&gt;Other&lt;/option&gt;
-        &lt;/select&gt;
-        &lt;span className="error-message"&gt;Choose one of field&lt;/span&gt;
-      &lt;/div&gt;
-    );
-  }
-}
 export default FormSelectInput;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -166,7 +148,7 @@ export default FormSelectInput;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-26T15:04:36.967Z
+                at 2023-04-05T11:03:52.827Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
