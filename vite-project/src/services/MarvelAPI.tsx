@@ -61,9 +61,6 @@ class MarvelAPI {
     const url = search === '' ? baseURL : urlWithSearch;
 
     const response = await fetch(url);
-    // if (!response.ok) {
-    //   throw new Error(`Couldn't fetch ${this.baseUrl} with status ${response.status}`);
-    // }
     const result = await response.json();
     return result.data.results.map(transformCharactersData);
   };
@@ -72,9 +69,6 @@ class MarvelAPI {
     const url = `${this.baseUrl}characters/${id}?${this.apiKey}`;
 
     const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Couldn't fetch ${this.baseUrl} with status ${response.status}`);
-    }
     const result = await response.json();
     return transformCharacterData(result.data.results[0]);
   };
