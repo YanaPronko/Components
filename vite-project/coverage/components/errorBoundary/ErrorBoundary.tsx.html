@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/inputs/FormTextInput.tsx</title>
+    <title>Code coverage report for components/errorBoundary/ErrorBoundary.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/inputs</a> FormTextInput.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/errorBoundary</a> ErrorBoundary.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/27</span>
+                <span class='fraction'>18/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/27</span>
+                <span class='fraction'>18/26</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -89,20 +89,12 @@
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -112,38 +104,43 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { InputProps } from '../pages/FormPage';
-import '../form/form.scss';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, ErrorInfo, ReactNode } from 'react';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 &nbsp;
-const FormTextInput: React.FC&lt;InputProps&gt; = ({ register, id, errors, ...inputProps }) =&gt; {
-  return (
-    &lt;div className="input-box"&gt;
-      &lt;label htmlFor={id[0]} className="details"&gt;
-        Full Name
-      &lt;/label&gt;
-      &lt;input
-        className="input name-input"
-        id={id[0]}
-        {...register('name', {
-          required: true,
-          pattern: /^[A-Za-zа-яёА-ЯЁ0-9]{3,16}/,
-        })}
-        {...inputProps}
-      /&gt;
-      {errors?.<span class="branch-0 cbranch-no" title="branch not covered" >name &amp;&amp; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;p className="error-message"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          Username should be 3-16 characters and should not include any special character!</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
-      )}
-    &lt;/div&gt;
-  );
+type ErrorProps = {
+  children: ReactNode;
 };
-export default FormTextInput;
+class ErrorBoundary extends Component&lt;ErrorProps&gt; {
+  state = {
+    error: false,
+  };
+&nbsp;
+<span class="fstat-no" title="function not covered" >  componentDidCatch(error: Error, errorInfo: ErrorInfo) {</span>
+<span class="cstat-no" title="statement not covered" >    console.log(error, errorInfo);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+<span class="cstat-no" title="statement not covered" >      error: true,</span>
+<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+  render(): ReactNode {
+    if (this.state.error) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      return &lt;ErrorMessage /&gt;;</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+    return this.props.children;
+  }
+}
+export default ErrorBoundary;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

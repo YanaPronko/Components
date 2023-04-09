@@ -13,6 +13,18 @@ const mockCharacters: ICharacter[] = [
       path: 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available',
       extension: 'jpg',
     },
+    comics: {
+      items: [
+        {
+          resourceURI: 'http://gateway.marvel.com/v1/public/comics/21366',
+          name: 'Avengers: The Initiative (2007) #14',
+        },
+        {
+          resourceURI: 'http://gateway.marvel.com/v1/public/comics/24571',
+          name: 'Avengers: The Initiative (2007) #14 (SPOTLIGHT VARIANT)',
+        },
+      ],
+    },
   },
 ];
 
@@ -33,7 +45,15 @@ describe('Transform', () => {
 });
 describe('Render', () => {
   it('render', () => {
-    render(<CharactersList characters={transformedChars} />);
+    render(
+      <CharactersList
+        characters={transformedChars}
+        error={false}
+        isLoading={true}
+        setSelectedCharID={() => jest.fn()}
+        setActiveModal={() => jest.fn()}
+      />
+    );
     expect(screen.getByRole('listitem')).toBeInTheDocument();
     expect(screen.getByText('Captain Flint')).toBeInTheDocument();
   });
