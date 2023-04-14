@@ -1,7 +1,11 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 import './searchBar.scss';
 
-const SearchBar = () => {
+type Props = {
+  setSearch: (val: string) => void;
+};
+
+const SearchBar: FC<Props> = ({ setSearch }) => {
   const [inputValue, setInputValue] = useState('');
 
   const inputValueRef = useRef(inputValue);
@@ -20,6 +24,7 @@ const SearchBar = () => {
   const onUpdateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
+    setSearch(value);
   };
 
   return (
