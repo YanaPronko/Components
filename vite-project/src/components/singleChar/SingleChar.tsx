@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react';
-import MarvelAPI from '../../services/MarvelAPI';
-import { Items } from '../../services/MarvelAPI';
+import { FC } from 'react';
+import { Items } from '../../models/ICharacters';
+import { useFetchCharQuery } from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 import './singleChar.scss';
@@ -14,44 +14,19 @@ export interface ITransformedChar {
   wiki: string;
   comics: Items[];
 }
-const marvelAPI = new MarvelAPI();
 
 type Props = {
   selectedCharID: number;
 };
 
 const SingleChar: FC<Props> = ({ selectedCharID }) => {
-  const [singleChar, setSingleChar] = useState<ITransformedChar | null>(null);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    let isIgnoreRes = false;
-
-    const onCharLoaded = (char: ITransformedChar) => {
-      if (!isIgnoreRes) {
-        setSingleChar(() => char);
-        setIsLoading(false);
-      }
-    };
-    if (!selectedCharID) return;
-    marvelAPI.getCharacter(selectedCharID).then(onCharLoaded).catch(onError);
-
-    return () => {
-      isIgnoreRes = true;
-    };
-  }, [selectedCharID]);
-
-  const onError = () => {
-    setError(true);
-    setIsLoading(false);
-  };
+  const { data: singleChar, isLoading, isError } = useFetchCharQuery(selectedCharID);
 
   return (
     <>
       {isLoading && <Spinner />}
-      {error && <ErrorMessage />}
-      {!(isLoading || error || !singleChar) ? <View singleChar={singleChar} /> : null}
+      {isError && <ErrorMessage />}
+      {!(isLoading || isError || !singleChar) ? <View singleChar={singleChar} /> : null}
     </>
   );
 };

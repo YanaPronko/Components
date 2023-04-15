@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CharactersList from '../charactersList/CharactersList';
 import SearchBar from '../searchBar/SearchBar';
-import MarvelAPI from '../../services/MarvelAPI';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 import Modal from '../modal/Modal';
 import SingleChar from '../singleChar/SingleChar';
+import { useFetchAllCharsQuery } from '../../services/MarvelService';
+import { useAppSelector } from '../../reducers/SearchSlice';
 
 export interface ITransformedCharacters {
   id: number;
@@ -13,43 +14,30 @@ export interface ITransformedCharacters {
   description: string;
 }
 
-const marvelAPI = new MarvelAPI();
-
 const Main = () => {
-  const [characters, setCharacters] = useState<ITransformedCharacters[] | []>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [search, setSearch] = useState(localStorage.getItem('inputValue') || '');
-  const [error, setError] = useState(false);
+  const search = useAppSelector((state) => state.search.searchParam);
   const [selectedCharID, setSelectedCharID] = useState<number>(0);
   const [isActiveModal, setActiveModal] = useState(false);
 
-  const offset = 510;
-
-  const onItemsLoaded = (items: ITransformedCharacters[]) => {
-    setCharacters(() => [...items]);
-    setIsLoading(false);
+  const getParams = (params: string) => {
+    if (params === '') {
+      return `?offset=510&apikey=3bc0075bdf9cab04a01fcd1a7e7d1b84`;
+    } else {
+      return `?nameStartsWith=${params}&apikey=3bc0075bdf9cab04a01fcd1a7e7d1b84`;
+    }
   };
 
-  const onError = () => {
-    setError(true);
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    const getCharacters = () => {
-      marvelAPI.getAllCharacters(offset, search).then(onItemsLoaded).catch(onError);
-    };
-    getCharacters();
-  }, [search]);
+  const { data: chars = [], isLoading, isError } = useFetchAllCharsQuery(getParams(search));
+  console.log(chars);
 
   return (
     <div className="wrapper">
       <ErrorBoundary>
-        <SearchBar setSearch={setSearch} />
+        <SearchBar />
         <CharactersList
-          characters={characters}
-          error={error}
+          characters={chars}
           isLoading={isLoading}
+          error={isError}
           setSelectedCharID={setSelectedCharID}
           setActiveModal={setActiveModal}
         />

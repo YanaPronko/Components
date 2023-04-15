@@ -1,30 +1,15 @@
-import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC } from 'react';
+import { actions, useAppDispatch, useAppSelector } from '../../reducers/SearchSlice';
 import './searchBar.scss';
 
-type Props = {
-  setSearch: (val: string) => void;
-};
-
-const SearchBar: FC<Props> = ({ setSearch }) => {
-  const [inputValue, setInputValue] = useState('');
-
-  const inputValueRef = useRef(inputValue);
-
-  useEffect(() => {
-    inputValueRef.current = inputValue;
-  }, [inputValue]);
-
-  useEffect(() => {
-    const savedInputValue = localStorage.getItem('inputValue');
-    if (savedInputValue) setInputValue(savedInputValue);
-
-    return () => localStorage.setItem('inputValue', `${inputValueRef.current}`);
-  }, []);
+const SearchBar: FC = () => {
+  const { searchParam } = useAppSelector((state) => state.search);
+  const dispatch = useAppDispatch();
+  const { setSearchParams } = actions;
 
   const onUpdateSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setInputValue(value);
-    setSearch(value);
+    dispatch(setSearchParams(value));
   };
 
   return (
@@ -33,7 +18,7 @@ const SearchBar: FC<Props> = ({ setSearch }) => {
         className="search__bar"
         type="text"
         placeholder="Search ..."
-        value={inputValue}
+        value={searchParam}
         onChange={onUpdateSearch}
       />
     </>
