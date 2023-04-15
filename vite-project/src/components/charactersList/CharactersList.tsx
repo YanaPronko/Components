@@ -19,7 +19,6 @@ const CharactersList: React.FC<CharactersListProps> = ({
   setSelectedCharID,
   setActiveModal,
 }) => {
-  console.log(characters);
   const renderCharacters = (characters: ITransformedCharacters[]) => {
     const items = characters.map(({ id, name, description, thumbnail }) => {
       const imgStyle =
