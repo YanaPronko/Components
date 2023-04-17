@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for reducers/FormSlice.tsx</title>
+    <title>Code coverage report for store/store.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">reducers</a> FormSlice.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">store</a> store.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/22</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.9% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/22</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
@@ -85,7 +85,9 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -99,36 +101,40 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { IValidInputCard } from '../components/pages/FormPage';
-import { AppDispatch, RootState } from '../store/store';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query/react';
+import { marvelService } from '../services/MarvelService';
+import search from '../reducers/SearchSlice';
+import forms from '../reducers/FormSlice';
 &nbsp;
-const initialState: IValidInputCard[] = [];
+export const rootReducer = combineReducers({
+  [marvelService.reducerPath]: marvelService.reducer,
+  search,
+  forms,
+});
 &nbsp;
-export const formsSlice = createSlice({
-  name: 'forms',
-  initialState,
-  reducers: {
-<span class="fstat-no" title="function not covered" >    saveFormCard(state, action: PayloadAction&lt;IValidInputCard&gt;) {</span>
-<span class="cstat-no" title="statement not covered" >      state.push(action.payload);</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
-  },
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =&gt; getDefaultMiddleware().concat(marvelService.middleware),
+  devTools: process.env.NODE_ENV !== 'production',
 }<span class="fstat-no" title="function not covered" >);</span>
-export const { actions, reducer } = <span class="fstat-no" title="function not covered" >formsSlice;</span>
-export const useAppDispatch = () =&gt; useDispatch&lt;AppDispatch&gt;();
-export const useAppSelector: TypedUseSelectorHook&lt;RootState&gt; = useSelector;
-export default reducer;
+&nbsp;
+setupListeners(store.dispatch);
+export type RootState = ReturnType&lt;typeof rootReducer&gt;;
+export type AppStore = typeof store;
+export type AppDispatch = AppStore['dispatch'];
+&nbsp;
+export default store;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

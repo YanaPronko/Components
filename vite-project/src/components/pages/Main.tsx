@@ -28,7 +28,6 @@ const Main = () => {
   };
 
   const { data: chars = [], isLoading, isError } = useFetchAllCharsQuery(getParams(search));
-
   return (
     <div className="wrapper">
       <ErrorBoundary>

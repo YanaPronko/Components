@@ -4,7 +4,7 @@ import { marvelService } from '../services/MarvelService';
 import search from '../reducers/SearchSlice';
 import forms from '../reducers/FormSlice';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   [marvelService.reducerPath]: marvelService.reducer,
   search,
   forms,
