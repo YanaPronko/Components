@@ -1,8 +1,8 @@
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import CharactersList from '../components/charactersList/CharactersList';
-import { ICharacter } from '../services/MarvelAPI';
-import { transformCharactersData } from '../services/MarvelAPI';
+import { ICharacter } from '../models/ICharacters';
+import { transformCharactersData } from '../services/MarvelService';
 
 const mockCharacters: ICharacter[] = [
   {

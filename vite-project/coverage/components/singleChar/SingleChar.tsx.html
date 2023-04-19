@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.7% </span>
+                <span class="strong">36.14% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/108</span>
+                <span class='fraction'>30/83</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.7% </span>
+                <span class="strong">36.14% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>31/108</span>
+                <span class='fraction'>30/83</span>
             </div>
         
             
@@ -146,32 +146,7 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -193,31 +168,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -279,9 +229,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC, useEffect, useState } from 'react';
-import MarvelAPI from '../../services/MarvelAPI';
-import { Items } from '../../services/MarvelAPI';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { FC } from 'react';
+import { Items } from '../../models/ICharacters';
+import { useFetchCharQuery } from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 import './singleChar.scss';
@@ -295,44 +245,19 @@ export interface ITransformedChar {
   wiki: string;
   comics: Items[];
 }
-const marvelAPI = new MarvelAPI();
 &nbsp;
 type Props = {
   selectedCharID: number;
 };
 &nbsp;
 const SingleChar: FC&lt;Props&gt; = <span class="fstat-no" title="function not covered" >({ selectedCharID }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const [singleChar, setSingleChar] = useState&lt;ITransformedChar | null&gt;(null);</span>
-<span class="cstat-no" title="statement not covered" >  const [error, setError] = useState(false);</span>
-<span class="cstat-no" title="statement not covered" >  const [isLoading, setIsLoading] = useState(true);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  useEffect(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    let isIgnoreRes = false;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const onCharLoaded = (char: ITransformedChar) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (!isIgnoreRes) {</span>
-<span class="cstat-no" title="statement not covered" >        setSingleChar(() =&gt; char);</span>
-<span class="cstat-no" title="statement not covered" >        setIsLoading(false);</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    };</span>
-<span class="cstat-no" title="statement not covered" >    if (!selectedCharID) return;</span>
-<span class="cstat-no" title="statement not covered" >    marvelAPI.getCharacter(selectedCharID).then(onCharLoaded).catch(onError);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      isIgnoreRes = true;</span>
-<span class="cstat-no" title="statement not covered" >    };</span>
-<span class="cstat-no" title="statement not covered" >  }, [selectedCharID]);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const onError = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setError(true);</span>
-<span class="cstat-no" title="statement not covered" >    setIsLoading(false);</span>
-<span class="cstat-no" title="statement not covered" >  };</span>
+<span class="cstat-no" title="statement not covered" >  const { data: singleChar, isLoading, isError } = useFetchCharQuery(selectedCharID);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
 <span class="cstat-no" title="statement not covered" >    &lt;&gt;</span>
 <span class="cstat-no" title="statement not covered" >      {isLoading &amp;&amp; &lt;Spinner /&gt;}</span>
-<span class="cstat-no" title="statement not covered" >      {error &amp;&amp; &lt;ErrorMessage /&gt;}</span>
-<span class="cstat-no" title="statement not covered" >      {!(isLoading || error || !singleChar) ? &lt;View singleChar={singleChar} /&gt; : null}</span>
+<span class="cstat-no" title="statement not covered" >      {isError &amp;&amp; &lt;ErrorMessage /&gt;}</span>
+<span class="cstat-no" title="statement not covered" >      {!(isLoading || isError || !singleChar) ? &lt;View singleChar={singleChar} /&gt; : null}</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/&gt;</span>
 <span class="cstat-no" title="statement not covered" >  );</span>
 <span class="cstat-no" title="statement not covered" >};</span>
@@ -394,7 +319,7 @@ export default SingleChar;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-09T21:57:41.453Z
+                at 2023-04-19T10:20:14.884Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

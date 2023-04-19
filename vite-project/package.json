@@ -12,12 +12,15 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
+    "@types/react-redux": "^7.1.25",
     "bootstrap": "^5.2.3",
     "eslint-plugin-react-hooks": "^4.6.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0"
   },
   "devDependencies": {

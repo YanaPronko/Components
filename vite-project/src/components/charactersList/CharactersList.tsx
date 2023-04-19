@@ -5,7 +5,7 @@ import Spinner from '../spinner/Spinner';
 import './charactersList.scss';
 
 interface CharactersListProps {
-  characters: ITransformedCharacters[] | [];
+  characters: ITransformedCharacters[];
   error: boolean;
   isLoading: boolean;
   setSelectedCharID: (id: number) => void;

@@ -12,6 +12,7 @@ import {
 } from '../inputs';
 import { useState } from 'react';
 import ValidCard from '../validCard/ValidCard';
+import { useAppDispatch, useAppSelector, actions } from '../../reducers/FormSlice';
 
 export type IValidCard = {
   name: string;
@@ -47,8 +48,11 @@ const Message = () => {
 };
 
 const FormPage = () => {
-  const [validData, setValidData] = useState<IValidInputCard[]>([]);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const forms = useAppSelector((state) => state.forms);
+
   const {
     register,
     handleSubmit,
@@ -59,17 +63,17 @@ const FormPage = () => {
     reValidateMode: 'onSubmit',
   });
 
-  const onSubmit = (data: IValidCard) => {
+  const onSubmit = ({ name, gender, country, accept, birthday, img }: IValidCard) => {
     const validInputData: IValidInputCard = {
-      name: data.name,
-      gender: data.gender,
-      country: data.country,
-      accept: data.accept,
-      birthday: data.birthday,
-      img: URL.createObjectURL(data.img[0]),
+      name,
+      gender,
+      country,
+      accept,
+      birthday,
+      img: URL.createObjectURL(img[0]),
     };
     if (isValid) {
-      setValidData((validData) => [...validData, validInputData]);
+      dispatch(actions.saveFormCard(validInputData));
       setIsSuccess(true);
     }
     reset();
@@ -125,7 +129,7 @@ const FormPage = () => {
       </Form>
       {isSuccess && <Message />}
       <ul className="cards__list">
-        {validData.map((object, ind) => {
+        {forms.map((object, ind) => {
           return <ValidCard item={object} key={ind} />;
         })}
       </ul>
