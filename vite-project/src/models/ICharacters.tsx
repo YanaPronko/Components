@@ -1,12 +1,13 @@
 export interface IResponse {
   status: 'Ok';
-  data: {
-    offset: number;
-    limit: number;
-    total: number;
-    count: number;
-    results: ICharacter[];
-  };
+  data: IResponseData;
+}
+export interface IResponseData {
+  offset: number;
+  limit: number;
+  total: number;
+  count: number;
+  results: ICharacter[];
 }
 
 export interface ICharacter {

@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ICharacter } from '../models/ICharacters';
+import { ITransformedCharacters } from '../components/pages/Main';
+import { ITransformedChar } from '../components/singleChar/SingleChar';
+import { ICharacter, IResponse, IResponseData } from '../models/ICharacters';
 
 export const transformCharactersData = (character: ICharacter) => {
   return {
@@ -33,25 +35,20 @@ export const marvelService = createApi({
   }),
   tagTypes: ['Chars', 'Char'],
   endpoints: (build) => ({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    fetchAllChars: build.query<any, string>({
+    fetchAllChars: build.query<ITransformedCharacters[], string>({
       query: (params) => ({
         url: `/characters${params}`,
       }),
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      transformResponse: (response: { data: any }) =>
+      transformResponse: (response: { data: IResponseData }) =>
         response.data.results.map(transformCharactersData),
       providesTags: () => ['Chars'],
     }),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    fetchChar: build.query<any, number>({
+    fetchChar: build.query<ITransformedChar, number>({
       query: (params) => ({
         url: `/characters/${params}?apikey=3bc0075bdf9cab04a01fcd1a7e7d1b84`,
       }),
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      transformResponse: (response: { data: any }) =>
-        transformCharacterData(response.data.results[0]),
+      transformResponse: (response: IResponse) => transformCharacterData(response.data.results[0]),
       providesTags: () => ['Char'],
     }),
   }),
