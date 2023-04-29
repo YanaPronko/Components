@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query/react';
 import { marvelService } from '../services/MarvelService';
 import search from '../reducers/SearchSlice';
 import forms from '../reducers/FormSlice';
@@ -10,15 +9,16 @@ export const rootReducer = combineReducers({
   forms,
 });
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(marvelService.middleware),
-  devTools: process.env.NODE_ENV !== 'production',
-});
+export const initStore = (preloadedState?: Partial<RootState>) =>
+  configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(marvelService.middleware),
+    preloadedState,
+    devTools: process.env.NODE_ENV !== 'production',
+  });
 
-setupListeners(store.dispatch);
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = typeof store;
+export type AppStore = ReturnType<typeof initStore>;
 export type AppDispatch = AppStore['dispatch'];
 
-export default store;
+export default initStore;

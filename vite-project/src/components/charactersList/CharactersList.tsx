@@ -21,10 +21,6 @@ const CharactersList: React.FC<CharactersListProps> = ({
 }) => {
   const renderCharacters = (characters: ITransformedCharacters[]) => {
     const items = characters.map(({ id, name, description, thumbnail }) => {
-      const imgStyle =
-        thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
-          ? 'unset'
-          : 'cover';
       return (
         <li
           className="char__item"
@@ -34,7 +30,7 @@ const CharactersList: React.FC<CharactersListProps> = ({
             setActiveModal(true);
           }}
         >
-          <img src={thumbnail} alt={name} className={imgStyle} />
+          <img src={thumbnail} alt={name} />
           <div className="char__name">{name}</div>
           <div className="char__descr">{description}</div>
         </li>

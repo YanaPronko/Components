@@ -5,6 +5,7 @@ import './appHeader.scss';
 const AppHeader = () => {
   const location = useLocation();
   const pathname = location.pathname;
+
   const getPath = useCallback(
     (pathname: string) => {
       return pathname === '/' ? 'ABOUT' : location.pathname.slice(1).toUpperCase();

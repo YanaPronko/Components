@@ -16,29 +16,25 @@ export interface ITransformedCharacters {
 
 const Main = () => {
   const search = useAppSelector((state) => state.search.searchParam);
+
   const [selectedCharID, setSelectedCharID] = useState<number>(0);
   const [isActiveModal, setActiveModal] = useState(false);
 
-  const getParams = (params: string) => {
-    if (params === '') {
-      return `?offset=510&apikey=3bc0075bdf9cab04a01fcd1a7e7d1b84`;
-    } else {
-      return `?nameStartsWith=${params}&apikey=3bc0075bdf9cab04a01fcd1a7e7d1b84`;
-    }
-  };
-
-  const { data: chars = [], isLoading, isError } = useFetchAllCharsQuery(getParams(search));
+  const { data, isLoading, isError } = useFetchAllCharsQuery(search);
+  console.log(data);
   return (
     <div className="wrapper">
       <ErrorBoundary>
         <SearchBar />
-        <CharactersList
-          characters={chars}
-          isLoading={isLoading}
-          error={isError}
-          setSelectedCharID={setSelectedCharID}
-          setActiveModal={setActiveModal}
-        />
+        {data && (
+          <CharactersList
+            characters={data}
+            isLoading={isLoading}
+            error={isError}
+            setSelectedCharID={setSelectedCharID}
+            setActiveModal={setActiveModal}
+          />
+        )}
         {isActiveModal && (
           <Modal isActiveModal={isActiveModal} setActiveModal={setActiveModal}>
             <SingleChar selectedCharID={selectedCharID} />

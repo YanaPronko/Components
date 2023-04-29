@@ -1,6 +1,6 @@
 @import '../../style/variables.scss';
 
-.modal {
+.popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -27,11 +27,11 @@
   }
 }
 
-.modal.active {
+.popup.active {
   opacity: 1;
   pointer-events: all;
 }
-.modal__content.active {
+.popup__content.active {
   transform: scale(1);
 }
 

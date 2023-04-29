@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { Items } from '../../models/ICharacters';
 import { useFetchCharQuery } from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
@@ -10,9 +9,9 @@ export interface ITransformedChar {
   name: string;
   description: string;
   thumbnail: string;
-  homepage: string;
-  wiki: string;
-  comics: Items[];
+  episodes: number | null;
+  duration: string | null;
+  season: string | null;
 }
 
 type Props = {
@@ -36,47 +35,19 @@ type ViewProps = {
 };
 
 const View: FC<ViewProps> = ({ singleChar }) => {
-  const { name, description, thumbnail, homepage, wiki, comics } = singleChar as ITransformedChar;
-
-  const imgStyle =
-    thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
-      ? 'unset'
-      : 'cover';
-
+  const { name, description, thumbnail, episodes, duration, season } =
+    singleChar as ITransformedChar;
   return (
-    <>
-      <div className="single-char__basics">
-        <img src={thumbnail} alt={name} className={imgStyle} />
-        <div>
-          <div className="single-char__info-name">{name}</div>
-          <div className="single-char__btns">
-            <a href={homepage} className="button button__main">
-              <div className="inner">homepage</div>
-            </a>
-            <a href={wiki} className="button button__secondary">
-              <div className="inner">Wiki</div>
-            </a>
-          </div>
-        </div>
+    <div className="single-char__basics">
+      <img src={thumbnail} alt={name} />
+      <div className="single-char__info-name">{name}</div>
+      <div className="single-char__btns">
+        <div>Episodes: {episodes}</div>
+        <div>Duration: {duration}</div>
+        <div>Season: {season}</div>
       </div>
       <div className="single-char__descr">{description}</div>
-      <div className="single-char__comics">Comics:</div>
-      {
-        <ul className="single-char__comics-list">
-          {comics.length > 0 ? null : 'There is no comics with this character'}
-          {comics.map((item, i) => {
-            if (i > 9) {
-              return null;
-            }
-            return (
-              <li key={i} className="single-char__comics-item">
-                {item.name}
-              </li>
-            );
-          })}
-        </ul>
-      }
-    </>
+    </div>
   );
 };
 
