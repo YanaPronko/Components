@@ -21,7 +21,7 @@ const Main = () => {
   const [isActiveModal, setActiveModal] = useState(false);
 
   const { data, isLoading, isError } = useFetchAllCharsQuery(search);
-  console.log(data);
+
   return (
     <div className="wrapper">
       <ErrorBoundary>

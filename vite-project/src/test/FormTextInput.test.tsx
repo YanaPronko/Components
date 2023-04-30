@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen } from './tests';
 import { FormPage } from '../components/pages';
 

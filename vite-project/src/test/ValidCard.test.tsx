@@ -1,4 +1,4 @@
-import { describe, it } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import ValidCard from '../components/validCard/ValidCard';
 import { IValidInputCard } from '../components/pages/FormPage';

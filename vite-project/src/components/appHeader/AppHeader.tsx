@@ -21,7 +21,7 @@ const AppHeader = () => {
 
   return (
     <header className="header">
-      {<h1 className="page__title">{path} page</h1>}
+      {<h2 className="page__title">{path} page</h2>}
       <nav className="menu">
         <ul className="menu-list">
           <li className="list-item">

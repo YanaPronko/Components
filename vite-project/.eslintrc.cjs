@@ -22,7 +22,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks', 'cypress'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',

@@ -1,45 +1,23 @@
-import { describe, it } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import CharactersList from '../components/charactersList/CharactersList';
-import { ICharacter } from '../models/ICharacters';
 import { transformCharactersData } from '../services/MarvelService';
+import { mockChars } from '../components/charactersList/CharactersList.cy';
 
-const mockCharacters: ICharacter[] = [
-  {
-    id: 1011196,
-    name: 'Captain Flint',
-    description: '',
-    thumbnail: {
-      path: 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available',
-      extension: 'jpg',
-    },
-    comics: {
-      items: [
-        {
-          resourceURI: 'http://gateway.marvel.com/v1/public/comics/21366',
-          name: 'Avengers: The Initiative (2007) #14',
-        },
-        {
-          resourceURI: 'http://gateway.marvel.com/v1/public/comics/24571',
-          name: 'Avengers: The Initiative (2007) #14 (SPOTLIGHT VARIANT)',
-        },
-      ],
-    },
-  },
-];
-
-const transformedChars = mockCharacters.map(transformCharactersData);
+const transformedChars = mockChars.data.map(transformCharactersData);
 
 describe('Transform', () => {
   it('get transform data', () => {
     expect(transformedChars.length).toBe(1);
   });
   it('get transformed description', () => {
-    expect(transformedChars[0].description).toBe('There is no description');
+    expect(transformedChars[0].description).toBe(
+      'A strange piper makes following spirits a mysterious blossom.'
+    );
   });
   it('check transform thumbnail', () => {
     expect(transformedChars[0].thumbnail).toBe(
-      'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
+      'https://cdn.myanimelist.net/images/anime/1109/132382.jpg'
     );
   });
 });
@@ -55,6 +33,6 @@ describe('Render', () => {
       />
     );
     expect(screen.getByRole('listitem')).toBeInTheDocument();
-    expect(screen.getByText('Captain Flint')).toBeInTheDocument();
+    expect(screen.getByText('Crater no Naru Ki')).toBeInTheDocument();
   });
 });

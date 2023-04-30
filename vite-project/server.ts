@@ -9,6 +9,7 @@ const base = process.env.BASE || '/';
 
 // Cached production assets
 const templateHtml = isProduction ? await fs.readFile('./dist/client/index.html', 'utf-8') : '';
+const prodScript = './dist/server/entry-server.js';
 
 // Create http server
 const app = express();
@@ -68,7 +69,7 @@ app.use('*', async (req, res) => {
       });
     } else {
       template = templateHtml;
-      render = (await import('./dist/server/entry-server.js')).render;
+      render = (await import(prodScript)).render;
     }
   } catch (e) {
     vite?.ssrFixStacktrace(e);
