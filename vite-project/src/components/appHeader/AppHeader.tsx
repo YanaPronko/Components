@@ -5,6 +5,7 @@ import './appHeader.scss';
 const AppHeader = () => {
   const location = useLocation();
   const pathname = location.pathname;
+
   const getPath = useCallback(
     (pathname: string) => {
       return pathname === '/' ? 'ABOUT' : location.pathname.slice(1).toUpperCase();
@@ -20,7 +21,7 @@ const AppHeader = () => {
 
   return (
     <header className="header">
-      {<h1 className="page__title">{path} page</h1>}
+      {<h2 className="page__title">{path} page</h2>}
       <nav className="menu">
         <ul className="menu-list">
           <li className="list-item">

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import CharactersList from '../charactersList/CharactersList';
 import SearchBar from '../searchBar/SearchBar';
-import MarvelAPI from '../../services/MarvelAPI';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 import Modal from '../modal/Modal';
 import SingleChar from '../singleChar/SingleChar';
+import { useFetchAllCharsQuery } from '../../services/MarvelService';
+import { useAppSelector } from '../../reducers/SearchSlice';
 
 export interface ITransformedCharacters {
   id: number;
@@ -13,46 +14,32 @@ export interface ITransformedCharacters {
   description: string;
 }
 
-const marvelAPI = new MarvelAPI();
-
 const Main = () => {
-  const [characters, setCharacters] = useState<ITransformedCharacters[] | []>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [search, setSearch] = useState(localStorage.getItem('inputValue') || '');
-  const [error, setError] = useState(false);
+  const search = useAppSelector((state) => state.search.searchParam);
+  const [inputValue, setInputValue] = useState('');
+
   const [selectedCharID, setSelectedCharID] = useState<number>(0);
   const [isActiveModal, setActiveModal] = useState(false);
 
-  const offset = 510;
-
-  const onItemsLoaded = (items: ITransformedCharacters[]) => {
-    setCharacters(() => [...items]);
-    setIsLoading(false);
-  };
-
-  const onError = () => {
-    setError(true);
-    setIsLoading(false);
-  };
+  const { data, isLoading, isError } = useFetchAllCharsQuery(inputValue);
 
   useEffect(() => {
-    const getCharacters = () => {
-      marvelAPI.getAllCharacters(offset, search).then(onItemsLoaded).catch(onError);
-    };
-    getCharacters();
+    setInputValue(search);
   }, [search]);
 
   return (
     <div className="wrapper">
       <ErrorBoundary>
-        <SearchBar setSearch={setSearch} />
-        <CharactersList
-          characters={characters}
-          error={error}
-          isLoading={isLoading}
-          setSelectedCharID={setSelectedCharID}
-          setActiveModal={setActiveModal}
-        />
+        <SearchBar />
+        {data && (
+          <CharactersList
+            characters={data}
+            isLoading={isLoading}
+            error={isError}
+            setSelectedCharID={setSelectedCharID}
+            setActiveModal={setActiveModal}
+          />
+        )}
         {isActiveModal && (
           <Modal isActiveModal={isActiveModal} setActiveModal={setActiveModal}>
             <SingleChar selectedCharID={selectedCharID} />

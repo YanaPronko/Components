@@ -16,7 +16,7 @@
   }
   &__basics {
     display: grid;
-    grid-template-columns: 150px auto;
+    grid-template-columns: 250px auto;
     column-gap: 25px;
     img {
       width: 150px;
@@ -27,8 +27,11 @@
   &__btns {
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
     margin-top: 2rem;
+    font-size: 1.5rem;
   }
   &__descr {
     margin-top: 15px;
