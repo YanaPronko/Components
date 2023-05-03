@@ -10,7 +10,6 @@ describe('Header component', () => {
         <AppHeader />
       </MemoryRouter>
     );
-
     expect(screen.getByText(/Main/i)).toBeDefined();
   });
 

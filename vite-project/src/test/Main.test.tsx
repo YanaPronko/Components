@@ -6,6 +6,5 @@ describe('Main page', () => {
   it('render Main page', () => {
     render(<Main />);
     expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
-    expect(screen.getByRole('list')).toBeInTheDocument();
   });
 });

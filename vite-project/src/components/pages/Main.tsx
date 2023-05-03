@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CharactersList from '../charactersList/CharactersList';
 import SearchBar from '../searchBar/SearchBar';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
@@ -16,11 +16,16 @@ export interface ITransformedCharacters {
 
 const Main = () => {
   const search = useAppSelector((state) => state.search.searchParam);
+  const [inputValue, setInputValue] = useState('');
 
   const [selectedCharID, setSelectedCharID] = useState<number>(0);
   const [isActiveModal, setActiveModal] = useState(false);
 
-  const { data, isLoading, isError } = useFetchAllCharsQuery(search);
+  const { data, isLoading, isError } = useFetchAllCharsQuery(inputValue);
+
+  useEffect(() => {
+    setInputValue(search);
+  }, [search]);
 
   return (
     <div className="wrapper">
